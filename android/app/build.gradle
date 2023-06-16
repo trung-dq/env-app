@@ -93,28 +93,6 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    flavorDimensions "default"
-    productFlavors {
-        production {
-            minSdkVersion rootProject.ext.minSdkVersion
-            applicationId "com.environment.product"
-            targetSdkVersion rootProject.ext.targetSdkVersion
-            resValue "string", "build_config_package", "com.environment"
-        }
-        staging {
-            minSdkVersion rootProject.ext.minSdkVersion
-            applicationId "com.environment.staging"
-            targetSdkVersion rootProject.ext.targetSdkVersion
-            resValue "string", "build_config_package", "com.environment"
-        }
-        development {
-            minSdkVersion rootProject.ext.minSdkVersion
-            applicationId "com.environment.development"
-            targetSdkVersion rootProject.ext.targetSdkVersion
-            resValue "string", "build_config_package", "com.environment"
-        }
-    }
-
     namespace "com.example_environment"
     defaultConfig {
         applicationId "com.example_environment"
@@ -189,15 +167,6 @@ dependencies {
         implementation jscFlavor
     }
 }
-
-project.ext.envConfigFiles = [
-   productiondebug: ".env.production",
-   productionrelease: ".env.production",
-   developmentrelease: ".env.development",
-   developmentdebug: ".env.development",
-   stagingrelease: ".env.staging",
-   stagingdebug: ".env.staging"
-]
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
